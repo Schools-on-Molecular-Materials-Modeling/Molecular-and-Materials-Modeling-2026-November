@@ -39,6 +39,3 @@
 Join our public community for social interactions and updates:  
 👉 **[VK Community: Molecular and Materials Modeling](https://vk.ru/molmat_modeling)**
 
-
-
-
