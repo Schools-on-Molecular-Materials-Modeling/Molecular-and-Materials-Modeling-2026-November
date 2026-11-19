@@ -1,0 +1,23 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_04/xtb-ase/.python diels-alder-xtb.py
+=== GFN2-xTB Calculator Initialization ===
+Method             : GFN2-xTB (Extended Tight-Binding + D4 dispersion)
+Reaction           : C4H6(g, 1,3-butadiene) + C2H4(g) -> C6H10(g, cyclohexene)
+Spin Treatment     : Closed-shell singlet (uhf=0)
+
+=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===
+[C4H6  (1,3-butadiene )] steps=20  | E_opt=-314.365039 eV | ZPE=2.2949 eV
+[C2H4  (ethene        )] steps=9   | E_opt=-170.649693 eV | ZPE=1.4140 eV
+[C6H10 (cyclohexene   )] steps=66  | E_opt=-487.939306 eV | ZPE=3.9120 eV
+
+=== Relaxed C=C Double Bond Lengths ===
+C=C in 1,3-butadiene : 1.3285 A  (Expt: 1.341 A)
+C=C in ethene        : 1.3164 A  (Expt: 1.339 A)
+C=C in cyclohexene   : 1.3223 A  (Expt: 1.335 A)
+
+=== Diels-Alder Reaction Enthalpy Summary (GFN2-xTB): C4H6 + C2H4 -> C6H10 ===
+Electronic dE_rxn  :  -2.9246 eV  ( -282.18 kJ/mol)
+Zero-Point dZPE    :  +0.2031 eV  (  +19.60 kJ/mol)
+ZPE-Corr dE_0K     :  -2.7214 eV  ( -262.58 kJ/mol)
+Reaction drH_298K  :  -2.6946 eV  ( -259.99 kJ/mol)  [Expt ref: -166.70 kJ/mol]
+
+
