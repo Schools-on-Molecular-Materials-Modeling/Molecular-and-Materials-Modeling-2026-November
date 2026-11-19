@@ -1,0 +1,31 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_02/gfn2-xtb-ase/.python methane_combustion_xtb.py
+=== GFN2-xTB Calculator Initialization ===
+Method             : GFN2-xTB (Extended Tight-Binding + D4 dispersion)
+Reaction           : CH4(g) + 2 O2(g) -> CO2(g) + 2 H2O(g)
+Spin Treatment     : Restricted closed-shell (uhf=0) except triplet O2 (uhf=2)
+
+=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===
+
+[CH4 (singlet)] steps=3  | E_opt=-113.613483 eV | ZPE=1.2195 eV
+  Internal frequencies (cm^-1): 1385.5, 1385.5, 1385.5, 1557.0, 1557.0, 3090.0, 3103.8, 3103.8, 3103.8
+
+[O2  (triplet)] steps=4  | E_opt=-215.082015 eV | ZPE=0.1023 eV
+  Internal frequencies (cm^-1): 1629.4
+
+[CO2 (singlet)] steps=4  | E_opt=-280.507275 eV | ZPE=0.3528 eV
+  Internal frequencies (cm^-1): 538.7, 538.9, 1425.3, 2594.1
+
+[H2O (singlet)] steps=4  | E_opt=-137.976542 eV | ZPE=0.5809 eV
+  Internal frequencies (cm^-1): 1538.6, 3643.4, 3651.7
+
+=== Relaxed Bond Lengths vs. Experiment ===
+C-H in CH4         : 1.0822 A  (Expt: 1.087 A)
+O=O in O2 (triplet): 1.2098 A  (Expt: 1.208 A)
+C=O in CO2         : 1.1437 A  (Expt: 1.160 A)
+O-H in H2O         : 0.9592 A  (Expt: 0.958 A)
+
+=== Gas-Phase Methane Combustion Summary (GFN2-xTB): CH4 + 2 O2 -> CO2 + 2 H2O ===
+Electronic dE_rxn  : -12.6828 eV  (-1223.71 kJ/mol)
+Zero-Point dZPE    :  +0.0906 eV  (   +8.74 kJ/mol)
+ZPE-Corr dE_0K     : -12.5922 eV  (-1214.97 kJ/mol)
+Enthalpy dcH_298K  : -12.6702 eV  (-1222.49 kJ/mol)  [Expt ref: -802.30 kJ/mol]
