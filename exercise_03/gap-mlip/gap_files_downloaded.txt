@@ -1,0 +1,28 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_03/gap-mlip/.ls -lth gap_files/; du -h -s gap_files/.
+total 157M
+-rw-r----- 1 milias milias  15M Nov 19 15:47 hirshfeld.xml.sparseX.GAP_2023_11_13_120_9_47_59_4432
+-rw-r----- 1 milias milias 5.5M Nov 19 15:47 hirshfeld.xml.sparseX.GAP_2023_11_13_120_9_47_59_4431
+-rw-r----- 1 milias milias  360 Nov 19 15:47 core_pot_3.dat
+-rw-r----- 1 milias milias  600 Nov 19 15:47 core_pot_2.dat
+-rw-r----- 1 milias milias  802 Nov 19 15:47 core_pot_1.dat
+-rw-r----- 1 milias milias 415K Nov 19 15:47 alphas_soap_turbo_2.dat
+-rw-r----- 1 milias milias 275K Nov 19 15:47 alphas_soap_turbo_1.dat
+-rw-r----- 1 milias milias  39K Nov 19 15:47 alphas_hirshfeld_2.dat
+-rw-r----- 1 milias milias  15K Nov 19 15:47 alphas_hirshfeld_1.dat
+-rw-r----- 1 milias milias 1.2K Nov 19 15:47 alphas_distance_2b_3.dat
+-rw-r----- 1 milias milias 1.2K Nov 19 15:47 alphas_distance_2b_2.dat
+-rw-r----- 1 milias milias 1.2K Nov 19 15:47 alphas_distance_2b_1.dat
+-rw-r----- 1 milias milias 7.9K Nov 19 15:47 alphas_angle_3b_3.dat
+-rw-r----- 1 milias milias 8.0K Nov 19 15:47 alphas_angle_3b_2.dat
+-rw-r----- 1 milias milias 8.0K Nov 19 15:47 alphas_angle_3b_1.dat
+-rw-r----- 1 milias milias  81M Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5478
+-rw-r----- 1 milias milias  54M Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5477
+-rw-r----- 1 milias milias  16K Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5476
+-rw-r----- 1 milias milias  16K Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5475
+-rw-r----- 1 milias milias  16K Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5474
+-rw-r----- 1 milias milias  810 Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5473
+-rw-r----- 1 milias milias  810 Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5472
+-rw-r----- 1 milias milias  810 Nov 19 15:47 CH.xml.sparseX.GAP_2023_11_27_120_22_26_19_5471
+-rw-r----- 1 milias milias 1.7M Nov 19 15:47 CH.xml
+-rw-r----- 1 milias milias 3.4K Nov 19 15:47 CH.gap
+157M    gap_files/.
