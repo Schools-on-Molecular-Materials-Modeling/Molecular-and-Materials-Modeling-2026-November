@@ -1,1 +1,1 @@
-Exercise 01
+#  Exercise 01 - checking the installed apparatus
