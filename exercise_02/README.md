@@ -29,4 +29,8 @@ Adapt the scripts to calculate the gas-phase burning enthalpy of **ethane** usin
 - **Ethane ($\text{C}_2\text{H}_6$):** Standard LHV at $298.15\text{ K}$ is **$-1428.7\text{ kJ/mol}$** ($-14.81\text{ eV}$ / $-341.5\text{ kcal/mol}$), derived from NIST formation enthalpies ($\text{C}_2\text{H}_6$: $-83.8\text{ kJ/mol}$).
 
 
+### Note:
+- **Standard LHV (Lower Heating Value) at $298.15\text{ K}$** is the standard enthalpy of complete combustion of a fuel when all water produced remains in the **gaseous (vapor) phase** at $298.15\text{ K}$ ($25\ ^\circ\text{C}$) and $1\text{ bar}$.
+**Standard LHV (Lower Heating Value) at $298.15\text{ K}$** is the standard enthalpy of complete combustion of a fuel when all water produced remains in the **gaseous (vapor) phase** at $298.15\text{ K}$ ($25\ ^\circ\text{C}$) and $1\text{ bar}$.
+
 
