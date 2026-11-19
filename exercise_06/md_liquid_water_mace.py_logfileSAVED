@@ -1,0 +1,31 @@
+(mace_env) miroi@MIRO:~/work/projects/mol_mat_modeling_schools/Molecular-and-Materials-Modeling-2026-November/exercise_06/.python md_liquid_water_mace.py
+/home/miroi/miniconda3/envs/mace_env/lib/python3.13/site-packages/e3nn/o3/_wigner.py:10: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+=================================================================
+  ASE Molecular Dynamics Demo: Liquid Water (32 H2O, 300 K)
+=================================================================
+System             : 32 H2O molecules (96 atoms)
+Cubic Box Length   : 9.865 A (density = 0.997 g/cm^3)
+Calculator         : MACE-OFF23 (small) on cuda
+Using MACE-OFF23 MODEL for MACECalculator with /home/miroi/.cache/mace/MACE-OFF23_small.model
+Using float32 for MACECalculator, which is faster but less accurate. Recommended for MD. Use float64 for geometry optimization.
+/home/miroi/miniconda3/envs/mace_env/lib/python3.13/site-packages/mace/calculators/mace.py:226: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  torch.load(f=model_path, map_location=device)
+WARNING:root:Default dtype float32 does not match model dtype float64, converting models to float32.
+
+Equilibration (0.50 ps):
+1010step [00:35, 28.78step/s, T=332.9K]
+
+Production (2.00 ps):
+100%|████████████████████████████████| 4000/4000 [02:27<00:00, 27.04step/s, T=272.6K]
+
+Completed in 187.5 s (26.7 steps/s)
+Average Production Temperature : 298.1 +/- 24.8 K
+
+=== Liquid Water MD Observables vs. Experimental Reference (298-300 K) ===
+1st O-O Peak Position r1 : 2.78 A   (Expt X-ray/Neutron: 2.80 A)
+1st O-O Peak Height g(r1): 2.88     (Expt X-ray/Neutron: 2.57 - 2.80)
+Self-Diffusion Coeff D   : 1.97 x 10^-5 cm^2/s  (Expt NMR: 2.30 x 10^-5 cm^2/s)
+Saved trajectory         : liquid_water_300K.traj (view with: ase gui liquid_water_300K.traj)
+(mace_env) miroi@MIRO:~/work/projects/mol_mat_modeling_schools/Molecular-and-Materials-Modeling-2026-November/exercise_06/.
