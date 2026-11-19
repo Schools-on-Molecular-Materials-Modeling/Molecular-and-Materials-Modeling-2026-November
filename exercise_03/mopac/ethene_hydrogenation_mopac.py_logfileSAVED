@@ -1,0 +1,30 @@
+=== MOPAC Calculator Initialization ===
+Method             : PM7 (Semi-Empirical NDDO Hamiltonian)
+Energy Definition  : FINAL HEAT OF FORMATION dHf(298.15 K)
+
+=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===
+[H2] steps=4 | dHf_298K= -133.93 kJ/mol | ZPE=0.3523 eV
+[C2H4] steps=10 | dHf_298K=  +57.97 kJ/mol | ZPE=1.3433 eV
+[C2H6] steps=8 | dHf_298K=  -76.14 kJ/mol | ZPE=1.8459 eV
+
+=== Hydrogenation Thermochemistry Summary (PM7): C2H4 + H2 -> C2H6 ===
+dHf(H2, 298K) raw  :  -133.93 kJ/mol  (Known NDDO H2 artifact; Expt ref: 0.00 kJ/mol)
+dHf(C2H4, 298K)    :   +57.97 kJ/mol  (Expt ref: +52.40 kJ/mol)
+dHf(C2H6, 298K)    :   -76.14 kJ/mol  (Expt ref: -84.00 kJ/mol)
+dH_298K (raw H2)   :    -0.18 kJ/mol
+dH_298K (dHf_H2=0) :  -134.11 kJ/mol  [Expt ref: -136.30 kJ/mol]
+=== MOPAC Calculator Initialization ===
+Method             : PM7 (Semi-Empirical NDDO Hamiltonian)
+Energy Definition  : FINAL HEAT OF FORMATION dHf(298.15 K)
+
+=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===
+[H2] steps=4 | dHf_298K= -133.93 kJ/mol | ZPE=0.3523 eV
+[C2H4] steps=10 | dHf_298K=  +57.97 kJ/mol | ZPE=1.3433 eV
+[C2H6] steps=8 | dHf_298K=  -76.14 kJ/mol | ZPE=1.8459 eV
+
+=== Hydrogenation Thermochemistry Summary (PM7): C2H4 + H2 -> C2H6 ===
+dHf(H2, 298K) raw  :  -133.93 kJ/mol  (Known NDDO H2 artifact; Expt ref: 0.00 kJ/mol)
+dHf(C2H4, 298K)    :   +57.97 kJ/mol  (Expt ref: +52.40 kJ/mol)
+dHf(C2H6, 298K)    :   -76.14 kJ/mol  (Expt ref: -84.00 kJ/mol)
+dH_298K (raw H2)   :    -0.18 kJ/mol
+dH_298K (dHf_H2=0) :  -134.11 kJ/mol  [Expt ref: -136.30 kJ/mol]
