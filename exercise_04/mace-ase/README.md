@@ -1,2 +1,2 @@
-Diels-Alder reaction with  MOPAC-ASE
+Diels-Alder reaction with MACE-ASE
 
