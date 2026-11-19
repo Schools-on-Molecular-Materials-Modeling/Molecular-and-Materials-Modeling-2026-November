@@ -36,17 +36,15 @@ def build_tms():
 
     # Staggered methyl hydrogens (r_CH = 1.093 A, tetrahedral angle 109.47 deg)
     r_ch = 1.093
-    cos_t = np.cos(np.deg2rad(109.4712))  # -1/3 along C->Si axis
-    sin_t = np.sin(np.deg2rad(109.4712))  # 2*sqrt(2)/3 perpendicular
+    cos_t = np.cos(np.deg2rad(109.4712))
+    sin_t = np.sin(np.deg2rad(109.4712))
 
     for c_pos in c_coords:
         symbols.append("C")
         positions.append(c_pos.tolist())
 
-        # Unit vector pointing from C away from Si
         u_axis = c_pos / np.linalg.norm(c_pos)
-        # Orthonormal basis perpendicular to u_axis
-        ref = np.array([1.0, 0.0, 0.0]) if abs(u_axis) < 0.9 else np.array([0.0, 1.0, 0.0])
+        ref = np.array([1.0, 0.0, 0.0]) if abs(u_axis[0]) < 0.9 else np.array([0.0, 1.0, 0.0])
         v1 = np.cross(u_axis, ref)
         v1 /= np.linalg.norm(v1)
         v2 = np.cross(u_axis, v1)
