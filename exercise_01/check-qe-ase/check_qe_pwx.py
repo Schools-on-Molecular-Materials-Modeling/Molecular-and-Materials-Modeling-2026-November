@@ -11,7 +11,7 @@ pwx_path = shutil.which("pw.x")
 assert pwx_path, "pw.x executable not found in PATH"
 print(f"Executable         : {pwx_path}")
 
-# Locate H and O pseudopotential (.UPF) files
+# Locate H and O pseudopotential (.UPF / .upf) files
 search_dirs = [
     os.environ.get("ESPRESSO_PSEUDO", ""),
     "./pseudo",
@@ -22,16 +22,17 @@ pseudo_dir, h_upf, o_upf = None, None, None
 for d in search_dirs:
     if d and Path(d).is_dir():
         p = Path(d)
-        h_matches = sorted(p.glob("H[._-]*.[uU][pP][fF]"))
-        o_matches = sorted(p.glob("O[._-]*.[uU][pP][fF]"))
+        h_matches = sorted(p.glob("H*.[uU][pP][fF]"))
+        o_matches = sorted(p.glob("O*.[uU][pP][fF]"))
         if h_matches and o_matches:
             pseudo_dir = str(p.resolve())
-            h_upf, o_upf = h_matches[0].name, o_matches[0].name
+            h_upf = h_matches[0].name
+            o_upf = o_matches[0].name
             break
 
 if not pseudo_dir:
     raise FileNotFoundError(
-        "pw.x is installed, but no H/O .UPF files were found in "
+        "pw.x is installed, but no H/O .upf files were found in "
         "$ESPRESSO_PSEUDO, ./pseudo, or ~/pseudo."
     )
 
@@ -58,7 +59,7 @@ atoms.calc = Espresso(
 try:
     energy = atoms.get_potential_energy()
     forces = atoms.get_forces()
-    print(f"Status             : PASS")
+    print("Status             : PASS")
     print(f"Total Energy (H2O) : {energy:.6f} eV")
     print(f"Max Force Component: {np.abs(forces).max():.6f} eV/A")
 finally:
