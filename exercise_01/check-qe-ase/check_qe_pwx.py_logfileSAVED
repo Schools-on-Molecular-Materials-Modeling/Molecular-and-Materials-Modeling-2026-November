@@ -1,0 +1,7 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_01/check-qe-ase/.python check_qe_pwx.py
+=== Quantum ESPRESSO (pw.x, np=2) Smoke Test ===
+Executable         : /home/milias/miniconda3/envs/molmatmodel/bin/pw.x
+Pseudo Directory   : /home/milias/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_01/check-qe-ase/pseudo (H=H.upf, O=O.upf)
+Status             : PASS
+Total Energy (H2O) : -473.405161 eV
+Max Force Component: 3.060312 eV/A
