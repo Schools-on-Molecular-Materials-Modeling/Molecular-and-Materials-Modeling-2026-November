@@ -1,11 +1,9 @@
-Let's verify why dHf(H2) = -133.93 kJ/mol happens in MOPAC PM7:
-• In James Stewart's PM7 parameterization paper (J. Mol. Model. 19, 1–32, 2013), diatomic \(\text{H}_{2}\) is a notorious outlier in NDDO methods: PM7 predicts \(\Delta H_f^\circ(\text{H}_2) \approx -32.0\text{ kcal/mol}\) (\(-133.9\text{ kJ/mol}\)) and \(\nu(\text{H}_2) \approx 5578\text{ cm}^{-1}\) because two-center one-electron core-attraction integrals have no heavy-atom screening in a pure H–H pair.
-• Meanwhile, for every heavy-atom molecule (\(\text{C}_2\text{H}_4\) and \(\text{C}_2\text{H}_6\)), PM7 is spot-on:
-	• \(\Delta H_f^\circ(\text{C}_2\text{H}_4, \text{PM7}) = +57.97\text{ kJ/mol}\) (Expt: \(+52.40\text{ kJ/mol}\))
-	• \(\Delta H_f^\circ(\text{C}_2\text{H}_6, \text{PM7}) = -76.14\text{ kJ/mol}\) (Expt: \(-84.00\text{ kJ/mol}\))
+### Why $\Delta H_f^\circ(\text{H}_2) = -133.93\text{ kJ/mol}$ Happens in MOPAC PM7
 
+- $\text{H}_2$ serves as a known outlier in NDDO-based methods like PM7 due to core-attraction integral approximations, leading to anomalous formation enthalpies and vibrational frequencies.
+- In contrast, PM7 demonstrates high accuracy for heavier hydrocarbons such as $\text{C}_2\text{H}_4$ and $\text{C}_2\text{H}_6$.
 
+### How to Handle $\text{H}_2$ Properly in MOPAC Benchmarks
 
-How to Handle H2 Properly in MOPAC Benchmarks
+Using standard reference states or isodesmic reaction schemes allows PM7 to bypass single-molecule $\text{H}_2$ errors and accurately reproduce experimental reaction enthalpies.
 
-If you use the standard thermodynamic reference \(\Delta H_f^\circ(\text{H}_2, 298.15\text{ K}) \equiv 0.00\text{ kJ/mol}\) (which is exact by definition for an element in its reference state) or run an isodesmic hydrogenation (transferring \(\text{H}_{2}\) from a saturated alkane like \(\text{C}_3\text{H}_8 \rightarrow \text{C}_3\text{H}_6 + \text{H}_2\) so the \(\text{H}_{2}\) diatomic error cancels out identically), PM7 gives \(-134.11\text{ kJ/mol}\)—within \(2.2\text{ kJ/mol}\) of experiment!
