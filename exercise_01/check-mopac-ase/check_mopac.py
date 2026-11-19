@@ -18,9 +18,11 @@ calc = MOPAC(
 atoms.calc = calc
 
 try:
-    dhf_ev = calc.get_final_heat_of_formation()
+    # Trigger calculation first so calc.results['final_hof'] is populated
+    _ = atoms.get_potential_energy()
     forces = atoms.get_forces()
-    print(f"Status             : PASS")
+    dhf_ev = calc.get_final_heat_of_formation()
+    print("Status             : PASS")
     print(f"dHf(H2O, 298K)     : {dhf_ev:.6f} eV")
     print(f"Max Force Component: {np.abs(forces).max():.6f} eV/A")
 finally:
