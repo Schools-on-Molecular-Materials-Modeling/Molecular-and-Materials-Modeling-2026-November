@@ -3,37 +3,34 @@ from pathlib import Path
 from ase.build import molecule
 from ase.optimize import BFGS
 from ase.vibrations import Vibrations
-from ase.thermochemistry import IdealGasThermo
 from ase.units import kJ, mol, invcm
 from ase.calculators.mopac import MOPAC
 
-# 1. Configure MOPAC semi-empirical method (PM7, PM6-D3H4, RM1, AM1, MNDO)
 method = "PM7"
 
 print("=== MOPAC Calculator Initialization ===")
 print(f"Method             : {method} (Semi-Empirical NDDO Hamiltonian)")
-print("Parameterization   : Fitted to experimental dHf(298K), geometries, and noncovalent interactions")
+print("Energy Definition  : FINAL HEAT OF FORMATION dHf(298.15 K) in eV")
 
 def make_mopac_calc(label):
-    # task='1SCF GRADIENTS' lets ASE drive geometry optimization (BFGS) and finite-difference Hessians cleanly
     return MOPAC(
         label=label,
         method=method,
         task="1SCF GRADIENTS PRECISE",
     )
 
-# 2. Helper function to relax tightly before Hessian evaluation
-def relax_molecule(name, fmax=0.0005):
+def relax_and_get_dhf(name, fmax=0.0005):
     atoms = molecule(name)
     atoms.pbc = False
-    atoms.calc = make_mopac_calc(f"mopac_opt_{name}")
+    calc = make_mopac_calc(f"mopac_opt_{name}")
+    atoms.calc = calc
     opt = BFGS(atoms, logfile=None)
     opt.run(fmax=fmax)
-    e_opt = atoms.get_potential_energy()
-    return atoms, e_opt, opt.nsteps
+    # Explicitly read FINAL HEAT OF FORMATION (298.15 K) in eV
+    dhf_ev = calc.get_final_heat_of_formation()
+    return atoms, dhf_ev, opt.nsteps
 
-# 3. Helper function to compute harmonic vibrations, ZPE, and 298.15 K enthalpy
-def analyze_vibrations(name, atoms, e_pot, geometry, symmetrynumber):
+def analyze_vibrations(name, atoms, geometry):
     vib_dir = Path(f"vib_mopac_{name}")
     if vib_dir.exists():
         shutil.rmtree(vib_dir)
@@ -47,45 +44,30 @@ def analyze_vibrations(name, atoms, e_pot, geometry, symmetrynumber):
     if vib_dir.exists():
         shutil.rmtree(vib_dir)
 
-    # Filter out 5 (linear) or 6 (nonlinear) translational/rotational modes
     n_tr = 5 if geometry == "linear" else 6
-    internal_energies = vib_energies[n_tr:]
-    internal_cm1 = [e.real / invcm for e in internal_energies]
+    internal_cm1 = [e.real / invcm for e in vib_energies[n_tr:]]
+    return internal_cm1, zpe
 
-    thermo = IdealGasThermo(
-        vib_energies=internal_energies,
-        potentialenergy=e_pot,
-        atoms=atoms,
-        geometry=geometry,
-        symmetrynumber=symmetrynumber,
-        spin=0,
-    )
-    h_298 = thermo.get_enthalpy(temperature=298.15, verbose=False)
-    return internal_cm1, zpe, h_298
-
-# 4. Run relaxation + vibrational analysis for reactants and product
 specs = {
-    "H2": ("linear", 2),
-    "C2H4": ("nonlinear", 4),
-    "C2H6": ("nonlinear", 6),
+    "H2": "linear",
+    "C2H4": "nonlinear",
+    "C2H6": "nonlinear",
 }
 
 print("\n=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===")
 results = {}
-for name, (geom, sym) in specs.items():
-    atoms, e_opt, steps = relax_molecule(name, fmax=0.0005)
-    freqs_cm1, zpe, h_298 = analyze_vibrations(name, atoms, e_opt, geom, sym)
+for name, geom in specs.items():
+    atoms, dhf_ev, steps = relax_and_get_dhf(name, fmax=0.0005)
+    freqs_cm1, zpe = analyze_vibrations(name, atoms, geom)
     results[name] = {
         "atoms": atoms,
-        "e_opt": e_opt,
+        "dhf_ev": dhf_ev,
         "zpe": zpe,
-        "h_298": h_298,
         "freqs": freqs_cm1,
     }
-    print(f"\n[{name}] (BFGS steps={steps}, E_opt={e_opt:.6f} eV, ZPE={zpe:.4f} eV)")
+    print(f"\n[{name}] (BFGS steps={steps}, dHf_298K={dhf_ev:+.6f} eV [{dhf_ev/(kJ/mol):+.2f} kJ/mol], ZPE={zpe:.4f} eV)")
     print("  Internal frequencies (cm^-1):", ", ".join(f"{f:.1f}" for f in freqs_cm1))
 
-# 5. Relaxed bond distances
 d_hh = results["H2"]["atoms"].get_distance(0, 1)
 d_cc_ene = results["C2H4"]["atoms"].get_distance(0, 1)
 d_cc_ane = results["C2H6"]["atoms"].get_distance(0, 1)
@@ -95,19 +77,17 @@ print(f"H-H  in H2         : {d_hh:.4f} A  (Expt: 0.741 A)")
 print(f"C=C  in C2H4       : {d_cc_ene:.4f} A  (Expt: 1.339 A)")
 print(f"C-C  in C2H6       : {d_cc_ane:.4f} A  (Expt: 1.535 A)")
 
-# 6. Reaction energetics summary: C2H4 + H2 -> C2H6
-dE_elec = results["C2H6"]["e_opt"] - (results["C2H4"]["e_opt"] + results["H2"]["e_opt"])
-dZPE = results["C2H6"]["zpe"] - (results["C2H4"]["zpe"] + results["H2"]["zpe"])
-dE_0K = dE_elec + dZPE
-dH_298 = results["C2H6"]["h_298"] - (results["C2H4"]["h_298"] + results["H2"]["h_298"])
+# Direct reaction enthalpy at 298.15 K from PM7 Heats of Formation (no double-counted ZPE)
+dH_298_ev = results["C2H6"]["dhf_ev"] - (results["C2H4"]["dhf_ev"] + results["H2"]["dhf_ev"])
+dZPE_ev = results["C2H6"]["zpe"] - (results["C2H4"]["zpe"] + results["H2"]["zpe"])
 
-print("\n=== Hydrogenation Thermochemistry Summary: C2H4 + H2 -> C2H6 ===")
-print(f"Electronic dE_rxn  : {dE_elec:8.4f} eV  ({dE_elec / (kJ / mol):8.2f} kJ/mol)")
-print(f"Zero-Point dZPE    : {dZPE:+8.4f} eV  ({dZPE / (kJ / mol):+8.2f} kJ/mol)  [Expt/DFT ref: ~ +0.34 eV (+33 kJ/mol)]")
-print(f"ZPE-Corr dE_0K     : {dE_0K:8.4f} eV  ({dE_0K / (kJ / mol):8.2f} kJ/mol)")
-print(f"Enthalpy dH_298K   : {dH_298:8.4f} eV  ({dH_298 / (kJ / mol):8.2f} kJ/mol)  [Expt ref: -1.41 eV (-136.3 kJ/mol)]")
+print("\n=== Hydrogenation Thermochemistry Summary (PM7): C2H4 + H2 -> C2H6 ===")
+print(f"dHf(H2, 298K)      : {results['H2']['dhf_ev']/(kJ/mol):+8.2f} kJ/mol  (Expt ref:   0.00 kJ/mol)")
+print(f"dHf(C2H4, 298K)    : {results['C2H4']['dhf_ev']/(kJ/mol):+8.2f} kJ/mol  (Expt ref: +52.40 kJ/mol)")
+print(f"dHf(C2H6, 298K)    : {results['C2H6']['dhf_ev']/(kJ/mol):+8.2f} kJ/mol  (Expt ref: -84.00 kJ/mol)")
+print(f"Harmonic dZPE      : {dZPE_ev/(kJ/mol):+8.2f} kJ/mol  (Informational only; already implicit in PM7 dHf)")
+print(f"Enthalpy dH_298K   : {dH_298_ev:8.4f} eV  ({dH_298_ev/(kJ/mol):8.2f} kJ/mol)  [Expt ref: -1.41 eV (-136.3 kJ/mol)]")
 
-# 7. Clean up temporary MOPAC .mop / .out / .arc scratch files
 for ext in ("*.mop", "*.out", "*.arc"):
     for f in Path(".").glob(ext):
         f.unlink()
