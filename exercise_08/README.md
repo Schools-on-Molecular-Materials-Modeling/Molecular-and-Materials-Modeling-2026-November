@@ -8,12 +8,6 @@
 - **GIAO Magnetizability Tensor ($\boldsymbol{\chi}$):** Computed analytically on the relaxed equilibrium geometry using `pyscf.prop.magnetizability.rks.Magnetizability`, evaluating both the diamagnetic ($\boldsymbol{\chi}^d$) and paramagnetic ($\boldsymbol{\chi}^p$) second-order magnetic response tensors:
 
 $$
-\chi_{\alpha\beta} = -\left.\frac{\partial^2 E(\mathbf{B})}{\partial B_\alpha \partial B_\beta}\right|_{\mathbf{B}=\mathbf{0}}, \qquad
-\chi_{\text{iso}} = \frac{1}{3}\operatorname{Tr}(\boldsymbol{\chi}), \qquad
-\Delta\chi = \chi_{\parallel} - \chi_{\perp}
-$$
-
-$$
 \chi_{\alpha\beta} = -\left.\frac{\partial^{2} E(\mathbf{B})}{\partial B_{\alpha}\,\partial B_{\beta}}\right|_{\mathbf{B}=\mathbf{0}},
 \qquad
 \chi_{\mathrm{iso}} = \tfrac{1}{3}\,\mathrm{Tr}(\chi),
