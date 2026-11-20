@@ -65,7 +65,7 @@ print(f"\nRelaxed Monomer E  : {e_mono:.6f} eV ({len(monomer)} atoms, BFGS steps
 
 # 2. Scan vertical interplanar distance z (slip-stacked by slip_x = 1.42 A, AB-graphite offset)
 slip_x = 1.42
-distances = [3.0, 3.2, 3.3, 3.4, 3.5, 3.6, 3.8, 4.0, 4.5, 5.0, 6.5]
+distances = [3.0, 3.10, 3.15, 3.20, 3.25, 3.3, 3.35, 3.4, 3.5, 3.6, 3.8, 4.0, 4.5, 4.75, 5.0, 5.25, 5.5, 6.0, 6.5]
 print(f"\n{'z (A)':>7} | {'E_int (eV)':>12} | {'E_int (kJ/mol)':>15}")
 print("-" * 41)
 
