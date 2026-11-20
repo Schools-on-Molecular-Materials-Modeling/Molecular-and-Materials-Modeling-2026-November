@@ -1,0 +1,28 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_03/alignnff-mlip-ase/.python ethene_hydrogenation_alignnff.py
+dir_path /home/milias/.cache/atomgptlab/alignn_ff/matpes_r2scan
+=== ALIGNN-FF Potential Initialization ===
+Model Directory    : /home/milias/.cache/atomgptlab/alignn_ff/matpes_r2scan
+Compute Device     : cuda (PyTorch 2.5.1.post208)
+Reference Level    : OptB88vdW / PBE (JARVIS-DFT / MPtrj)
+
+=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===
+
+[H2] (BFGS steps=6, E_opt=-7.653131 eV, ZPE=0.5584 eV)
+  Internal frequencies (cm^-1): 8815.7
+
+[C2H4] (BFGS steps=10, E_opt=-32.795254 eV, ZPE=1.4266 eV)
+  Internal frequencies (cm^-1): 481.4, 618.7, 721.1, 1085.7, 1363.7, 1409.3, 1796.4, 1797.8, 3205.0, 3225.0, 3607.1, 3673.7
+
+[C2H6] (BFGS steps=9, E_opt=-41.257496 eV, ZPE=2.0542 eV)
+  Internal frequencies (cm^-1): 365.4, 854.2, 854.2, 907.9, 1250.3, 1250.4, 1452.0, 1463.1, 1463.3, 1513.0, 1513.2, 1545.5, 2899.8, 2986.9, 3185.3, 3185.3, 3223.5, 3223.5
+
+=== Relaxed Bond Lengths vs. Experiment / DFT ===
+H-H  in H2         : 0.6551 A  (Expt: 0.741 A)
+C=C  in C2H4       : 1.3172 A  (Expt: 1.339 A)
+C-C  in C2H6       : 1.4964 A  (Expt: 1.535 A)
+
+=== Hydrogenation Thermochemistry Summary: C2H4 + H2 -> C2H6 ===
+Electronic dE_rxn  :  -0.8091 eV  (  -78.07 kJ/mol)
+Zero-Point dZPE    :  +0.0692 eV  (   +6.67 kJ/mol)  [Expt/DFT ref: ~ +0.34 eV (+33 kJ/mol)]
+ZPE-Corr dE_0K     :  -0.7399 eV  (  -71.39 kJ/mol)
+Enthalpy dH_298K   :  -0.8150 eV  (  -78.63 kJ/mol)  [Expt ref: -1.41 eV (-136.3 kJ/mol)]
