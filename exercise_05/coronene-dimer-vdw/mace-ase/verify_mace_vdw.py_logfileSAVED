@@ -20,15 +20,22 @@ Relaxed Monomer E  : -25103.590223 eV (36 atoms, BFGS steps=12)
    3.20 |      -0.2396 |          -23.12
    3.30 |      -0.4242 |          -40.93
    3.40 |      -0.5311 |          -51.25
+   3.45 |      -0.5610 |          -54.12
    3.50 |      -0.5777 |          -55.74
+   3.55 |      -0.5835 |          -56.29
    3.60 |      -0.5808 |          -56.04
    3.80 |      -0.5324 |          -51.37
    4.00 |      -0.4490 |          -43.32
    4.50 |      -0.0437 |           -4.21
    5.00 |      +0.0000 |           +0.00
+   5.50 |      +0.0000 |           +0.00
+   6.00 |      +0.0000 |           +0.00
    6.50 |      +0.0000 |           +0.00
-=> Equilibrium minimum : z ≈ 3.60 A, E_vdW = -56.04 kJ/mol (72 atoms)
-=> Saved trajectories  : mace_off23_monomer_opt.traj, mace_off23_dimer_zscan.traj, mace_off23_dimer_eq_z3.60A.xyz
+   7.00 |      +0.0000 |           +0.00
+   7.50 |      +0.0000 |           +0.00
+   8.00 |      +0.0000 |           +0.00
+=> Equilibrium minimum : z ≈ 3.55 A, E_vdW = -56.29 kJ/mol (72 atoms)
+=> Saved trajectories  : mace_off23_monomer_opt.traj, mace_off23_dimer_zscan.traj, mace_off23_dimer_eq_z3.55A.xyz
 Using Materials Project MACE for MACECalculator with /home/milias/.cache/mace/20231203mace128L1_epoch199model
 Using float64 for MACECalculator, which is slower but more accurate. Recommended for geometry optimization.
 /home/milias/miniconda3/envs/molmatmodel/lib/python3.13/site-packages/mace/calculators/mace.py:226: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
@@ -42,13 +49,20 @@ Relaxed Monomer E  : -261.458866 eV (36 atoms, BFGS steps=12)
    3.20 |      -0.1678 |          -16.19
    3.30 |      -0.4280 |          -41.30
    3.40 |      -0.5942 |          -57.33
+   3.45 |      -0.6490 |          -62.62
    3.50 |      -0.6886 |          -66.44
+   3.55 |      -0.7154 |          -69.03
    3.60 |      -0.7319 |          -70.62
    3.80 |      -0.7303 |          -70.46
    4.00 |      -0.6698 |          -64.63
    4.50 |      -0.4450 |          -42.94
    5.00 |      -0.1647 |          -15.89
+   5.50 |      -0.0080 |           -0.77
+   6.00 |      +0.0000 |           +0.00
    6.50 |      +0.0000 |           +0.00
+   7.00 |      +0.0000 |           +0.00
+   7.50 |      +0.0000 |           +0.00
+   8.00 |      +0.0000 |           +0.00
 => Equilibrium minimum : z ≈ 3.60 A, E_vdW = -70.62 kJ/mol (72 atoms)
 => Saved trajectories  : mace_mp0_nod3_monomer_opt.traj, mace_mp0_nod3_dimer_zscan.traj, mace_mp0_nod3_dimer_eq_z3.60A.xyz
 Using Materials Project MACE for MACECalculator with /home/milias/.cache/mace/20231203mace128L1_epoch199model
@@ -65,18 +79,25 @@ Relaxed Monomer E  : -263.115403 eV (36 atoms, BFGS steps=12)
    3.20 |      -1.4499 |         -139.89
    3.30 |      -1.6087 |         -155.22
    3.40 |      -1.6775 |         -161.86
+   3.45 |      -1.6855 |         -162.63
    3.50 |      -1.6795 |         -162.05
+   3.55 |      -1.6622 |         -160.38
    3.60 |      -1.6360 |         -157.85
    3.80 |      -1.4783 |         -142.64
    4.00 |      -1.2857 |         -124.05
    4.50 |      -0.8224 |          -79.35
    5.00 |      -0.3992 |          -38.52
+   5.50 |      -0.1575 |          -15.20
+   6.00 |      -0.0982 |           -9.47
    6.50 |      -0.0662 |           -6.39
-=> Equilibrium minimum : z ≈ 3.50 A, E_vdW = -162.05 kJ/mol (72 atoms)
-=> Saved trajectories  : mace_mp0_d3_monomer_opt.traj, mace_mp0_d3_dimer_zscan.traj, mace_mp0_d3_dimer_eq_z3.50A.xyz
+   7.00 |      -0.0457 |           -4.41
+   7.50 |      -0.0323 |           -3.11
+   8.00 |      -0.0232 |           -2.24
+=> Equilibrium minimum : z ≈ 3.45 A, E_vdW = -162.63 kJ/mol (72 atoms)
+=> Saved trajectories  : mace_mp0_d3_monomer_opt.traj, mace_mp0_d3_dimer_zscan.traj, mace_mp0_d3_dimer_eq_z3.45A.xyz
 
 === Van der Waals Benchmark Summary (Parallel-Displaced Coronene Dimer, 72 atoms) ===
-MACE-OFF23 (native D3BJ) : z_eq ≈ 3.60 A | E_int =  -56.04 kJ/mol
+MACE-OFF23 (native D3BJ) : z_eq ≈ 3.55 A | E_int =  -56.29 kJ/mol
 MACE-MP-0 (no dispersion): z_eq ≈ 3.60 A | E_int =  -70.62 kJ/mol
-MACE-MP-0 (+ D3)         : z_eq ≈ 3.50 A | E_int = -162.05 kJ/mol
+MACE-MP-0 (+ D3)         : z_eq ≈ 3.45 A | E_int = -162.63 kJ/mol
 Reference CCSD(T)/FN-DMC : z_eq ≈ 3.38 A | E_int ≈  -82.00 kJ/mol

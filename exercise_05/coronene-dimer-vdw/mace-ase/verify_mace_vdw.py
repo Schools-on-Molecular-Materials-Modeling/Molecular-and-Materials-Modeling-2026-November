@@ -67,7 +67,7 @@ def evaluate_vdw_curve(label, tag, calc, slip_x=1.42):
     print(f"Relaxed Monomer E  : {e_mono:.6f} eV ({len(monomer)} atoms, BFGS steps={opt.nsteps})")
 
     # Scan vertical interplanar distance z (slip-stacked by slip_x = 1.42 A, AB-graphite offset)
-    distances = [3.0, 3.2, 3.3, 3.4, 3.5, 3.6, 3.8, 4.0, 4.5, 5.0, 6.5]
+    distances = [3.0, 3.2, 3.3, 3.4, 3.45, 3.5, 3.55, 3.6, 3.8, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0]
     print(f"{'z (A)':>7} | {'E_int (eV)':>12} | {'E_int (kJ/mol)':>15}")
     print("-" * 41)
 
