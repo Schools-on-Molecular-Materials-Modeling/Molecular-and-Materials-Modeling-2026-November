@@ -24,7 +24,7 @@ $$\Delta_c H^\circ(298.15\text{ K}) = [-393.51 + 2(-241.83)] - [-74.87 + 2(0.00)
 
 ## Challenge
 
-Adapt the scripts to calculate the gas-phase burning enthalpy of **ethane** using AI assistance based on the balanced reaction and NIST reference values below.
+Adapt the scripts (MACE, MOPAC, NWChem, PySCF, xTB) to calculate the gas-phase burning enthalpy of **ethane** using AI assistance based on the balanced reaction and NIST reference values below.
 
 - **Ethane ($\text{C}_2\text{H}_6$):** Standard LHV at $298.15\text{ K}$ is **$-1428.7\text{ kJ/mol}$** ($-14.81\text{ eV}$ / $-341.5\text{ kcal/mol}$), derived from NIST formation enthalpies ($\text{C}_2\text{H}_6$: $-83.8\text{ kJ/mol}$).
 
