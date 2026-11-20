@@ -14,12 +14,17 @@ from ase.vibrations import Vibrations
 
 from pyscf import gto, dft, lib
 
+# D3(BJ) dispersion needs the separate pyscf-dispersion package; fail early with a clear message
+try:
+    from pyscf.dispersion import dftd3  # noqa: F401
+except ImportError as err:
+    raise SystemExit("D3 dispersion backend missing: pip install pyscf-dispersion") from err
+
 # 1. Configure DFT functional, basis set, threads
 # NOTE: in PySCF the plain libxc "wb97x-d" contains only the xc functional part. The
 # "-d3bj" name adds an explicit D3(BJ) dispersion term (needs: pip install pyscf-dispersion).
 xc_func = "wb97x-d3bj"      # range-separated hybrid + D3(BJ); alternatives: "wb97x-d", "pbe0"
-#basis_set = "def2-tzvp"     # triple-zeta; use "def2-svp" for quick tests
-basis_set = "def2-svp"     # use "def2-svp" for quick tests
+basis_set = "def2-svp"      # quick test; switch to "def2-tzvp" for production-quality energies
 density_fit = True          # RI-JK speeds up hybrid-DFT gradients a lot (error ~ microHartree)
 nthreads = 8
 lib.num_threads(nthreads)
@@ -72,13 +77,15 @@ class PySCFCalculator(Calculator):
         mf.conv_tol_grad = 1e-7
         mf.max_cycle = 200
 
+        dm0 = self._dm0 if (self._dm0 is not None and self._dm0.shape[-1] == m.nao) else None
+        mf.kernel(dm0=dm0)
+
+        # Dispersion is resolved when the SCF starts, so report it after the first kernel call
         if not PySCFCalculator._announced:
             print(f"  [PySCF] xc={mf.xc}, dispersion={getattr(mf, 'disp', None)}, "
                   f"DF={self.density_fit}, grid level={self.grid_level}")
             PySCFCalculator._announced = True
 
-        dm0 = self._dm0 if (self._dm0 is not None and self._dm0.shape[-1] == m.nao) else None
-        mf.kernel(dm0=dm0)
         if not mf.converged:
             raise RuntimeError("PySCF SCF did not converge")
         self._dm0 = mf.make_rdm1()
