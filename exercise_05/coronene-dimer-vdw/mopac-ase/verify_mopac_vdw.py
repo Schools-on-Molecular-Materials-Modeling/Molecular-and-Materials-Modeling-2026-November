@@ -81,7 +81,7 @@ def evaluate_mopac_vdw(method, tag, slip_x=1.42):
     )
 
     # 2. Scan vertical interplanar distance z (slip-stacked by slip_x = 1.42 A)
-    distances = [3.0, 3.2, 3.3, 3.4, 3.5, 3.6, 3.8, 4.0, 4.5, 5.0, 6.5]
+    distances = [3.0, 3.2, 3.3, 3.35, 3.4, 3.45, 3.5, 3.55, 3.6, 3.7, 3.8, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25,5.50, 5.75, 6.0, 6.25, 6.5, 6.75, 7.0]
     print(f"{'z (A)':>7} | {'E_int (eV)':>12} | {'E_int (kJ/mol)':>15}")
     print("-" * 41)
 

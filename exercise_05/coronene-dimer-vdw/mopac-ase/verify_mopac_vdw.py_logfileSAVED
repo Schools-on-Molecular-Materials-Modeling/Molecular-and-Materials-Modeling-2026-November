@@ -1,27 +1,74 @@
-(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_05/coronene-dimer-vdw/xtb-ase/.python verify_xtb_vdw.py
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_05/coronene-dimer-vdw/mopac-ase/.python verify_mopac_vdw.py
 =================================================================
-  GFN2-xTB Van der Waals (D4 Dispersion) Verification: Coronene Dimer
+  MOPAC Van der Waals (Dispersion) Verification: Coronene Dimer
 =================================================================
-Method             : GFN2-xTB (Extended Tight-Binding + Analytical D4)
+Methods            : PM7 (built-in damped dispersion) & PM6-D3H4 (analytical D3)
 System             : Coronene Dimer (C24H12 ... C24H12, 72 atoms)
 Benchmark Ref      : CCSD(T)/CBS & FN-DMC (~ -81.6 to -85.8 kJ/mol slip-stacked)
 
-Relaxed Monomer E  : -1567.429336 eV (36 atoms, BFGS steps=11)
-
+--- MOPAC (PM7) ---
+Relaxed Monomer dHf: +361.65 kJ/mol (36 atoms, BFGS steps=12)
   z (A) |   E_int (eV) |  E_int (kJ/mol)
 -----------------------------------------
-   3.00 |      -0.9421 |          -90.90
-   3.20 |      -1.0169 |          -98.12
-   3.30 |      -0.9950 |          -96.00
-   3.40 |      -0.9509 |          -91.75
-   3.50 |      -0.8930 |          -86.16
-   3.60 |      -0.8271 |          -79.80
-   3.80 |      -0.6866 |          -66.25
-   4.00 |      -0.5499 |          -53.06
-   4.50 |      -0.2731 |          -26.35
-   5.00 |      -0.0999 |           -9.64
-   6.50 |      +0.0643 |           +6.20
+   3.00 |      -0.8294 |          -80.03
+   3.20 |      -1.1255 |         -108.59
+   3.30 |      -1.1901 |         -114.83
+   3.35 |      -1.2088 |         -116.63
+   3.40 |      -1.2203 |         -117.74
+   3.45 |      -1.2260 |         -118.29
+   3.50 |      -1.2267 |         -118.35
+   3.55 |      -1.2232 |         -118.02
+   3.60 |      -1.2161 |         -117.34
+   3.70 |      -1.1932 |         -115.12
+   3.80 |      -1.1600 |         -111.92
+   4.00 |      -1.0668 |         -102.93
+   4.25 |      -0.9085 |          -87.65
+   4.50 |      -0.7313 |          -70.56
+   4.75 |      -0.5676 |          -54.77
+   5.00 |      -0.4326 |          -41.74
+   5.25 |      -0.3271 |          -31.57
+   5.50 |      -0.2467 |          -23.81
+   5.75 |      -0.1861 |          -17.96
+   6.00 |      -0.1405 |          -13.55
+   6.25 |      -0.1060 |          -10.23
+   6.50 |      -0.0802 |           -7.74
+   6.75 |      -0.0607 |           -5.86
+   7.00 |      -0.0458 |           -4.42
+=> Equilibrium minimum : z ≈ 3.50 A, E_vdW = -118.35 kJ/mol (72 atoms)
+=> Saved trajectories  : mopac_pm7_monomer_opt.traj, mopac_pm7_dimer_zscan.traj, mopac_pm7_dimer_eq_z3.50A.xyz
 
-=> Equilibrium minimum : z ≈ 3.20 A, E_vdW = -98.12 kJ/mol (72 atoms)
-=> Saved trajectories  : gfn2_xtb_monomer_opt.traj, gfn2_xtb_dimer_zscan.traj, gfn2_xtb_dimer_eq_z3.20A.xyz
-=> Reference L7/FN-DMC : z_eq ≈ 3.38 A, E_vdW ≈ -81.6 to -85.8 kJ/mol
+--- MOPAC (PM6-D3H4) ---
+Relaxed Monomer dHf: +318.42 kJ/mol (36 atoms, BFGS steps=12)
+  z (A) |   E_int (eV) |  E_int (kJ/mol)
+-----------------------------------------
+   3.00 |      -0.3468 |          -33.46
+   3.20 |      -0.6412 |          -61.87
+   3.30 |      -0.7024 |          -67.77
+   3.35 |      -0.7194 |          -69.41
+   3.40 |      -0.7288 |          -70.32
+   3.45 |      -0.7313 |          -70.56
+   3.50 |      -0.7275 |          -70.19
+   3.55 |      -0.7180 |          -69.28
+   3.60 |      -0.7035 |          -67.88
+   3.70 |      -0.6627 |          -63.94
+   3.80 |      -0.6114 |          -58.99
+   4.00 |      -0.4992 |          -48.17
+   4.25 |      -0.3741 |          -36.09
+   4.50 |      -0.2783 |          -26.85
+   4.75 |      -0.2078 |          -20.05
+   5.00 |      -0.1560 |          -15.05
+   5.25 |      -0.1176 |          -11.35
+   5.50 |      -0.0889 |           -8.58
+   5.75 |      -0.0674 |           -6.50
+   6.00 |      -0.0510 |           -4.92
+   6.25 |      -0.0385 |           -3.72
+   6.50 |      -0.0290 |           -2.79
+   6.75 |      -0.0216 |           -2.08
+   7.00 |      -0.0159 |           -1.54
+=> Equilibrium minimum : z ≈ 3.45 A, E_vdW = -70.56 kJ/mol (72 atoms)
+=> Saved trajectories  : mopac_pm6_d3h4_monomer_opt.traj, mopac_pm6_d3h4_dimer_zscan.traj, mopac_pm6_d3h4_dimer_eq_z3.45A.xyz
+
+=== Van der Waals Benchmark Summary (Parallel-Displaced Coronene Dimer, 72 atoms) ===
+MOPAC (PM7)              : z_eq ≈ 3.50 A | E_int = -118.35 kJ/mol
+MOPAC (PM6-D3H4)         : z_eq ≈ 3.45 A | E_int =  -70.56 kJ/mol  <========== WINNER !
+Reference CCSD(T)/FN-DMC : z_eq ≈ 3.38 A | E_int ≈  -82.00 kJ/mol
