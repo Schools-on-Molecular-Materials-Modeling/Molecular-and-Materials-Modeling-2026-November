@@ -1,0 +1,27 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_05/coronene-dimer-vdw/xtb-ase/.python verify_xtb_vdw.py
+=================================================================
+  GFN2-xTB Van der Waals (D4 Dispersion) Verification: Coronene Dimer
+=================================================================
+Method             : GFN2-xTB (Extended Tight-Binding + Analytical D4)
+System             : Coronene Dimer (C24H12 ... C24H12, 72 atoms)
+Benchmark Ref      : CCSD(T)/CBS & FN-DMC (~ -81.6 to -85.8 kJ/mol slip-stacked)
+
+Relaxed Monomer E  : -1567.429336 eV (36 atoms, BFGS steps=11)
+
+  z (A) |   E_int (eV) |  E_int (kJ/mol)
+-----------------------------------------
+   3.00 |      -0.9421 |          -90.90
+   3.20 |      -1.0169 |          -98.12
+   3.30 |      -0.9950 |          -96.00
+   3.40 |      -0.9509 |          -91.75
+   3.50 |      -0.8930 |          -86.16
+   3.60 |      -0.8271 |          -79.80
+   3.80 |      -0.6866 |          -66.25
+   4.00 |      -0.5499 |          -53.06
+   4.50 |      -0.2731 |          -26.35
+   5.00 |      -0.0999 |           -9.64
+   6.50 |      +0.0643 |           +6.20
+
+=> Equilibrium minimum : z ≈ 3.20 A, E_vdW = -98.12 kJ/mol (72 atoms)
+=> Saved trajectories  : gfn2_xtb_monomer_opt.traj, gfn2_xtb_dimer_zscan.traj, gfn2_xtb_dimer_eq_z3.20A.xyz
+=> Reference L7/FN-DMC : z_eq ≈ 3.38 A, E_vdW ≈ -81.6 to -85.8 kJ/mol
