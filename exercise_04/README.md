@@ -7,7 +7,7 @@ The repository provides benchmark comparisons against the experimental NIST gas-
 
 ### Challenge
 Calculate the gas-phase Diels–Alder enthalpy for the reaction 
- 1,3-butadiene + acrylonitrile \(\rightarrow \) 4-cyanocyclohexene .
+ 1,3-butadiene + acrylonitrile \longrightarrow 4-cyanocyclohexene .
 
 #### Thermochemical Reference Data (298.15 K, Gas Phase)
 
