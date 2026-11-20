@@ -1,0 +1,33 @@
+(molmatmodel) milias@DESKTOP-7OTLCGO:~/work/projects/schools/Molecular-and-Materials-Modeling-2026-November/exercise_03/mace-mlip-ase/.python ethene_hydrogenation_mace.py
+/home/milias/miniconda3/envs/molmatmodel/lib/python3.13/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+=== MACE-OFF23 Potential Initialization ===
+Model Variant      : MACE-OFF23 (medium)
+Compute Device     : cuda (PyTorch 2.5.1.post208)
+Reference Level    : wB97M-D3(BJ)/def2-TZVPPD
+Using MACE-OFF23 MODEL for MACECalculator with /home/milias/.cache/mace/MACE-OFF23_medium.model
+Using float64 for MACECalculator, which is slower but more accurate. Recommended for geometry optimization.
+/home/milias/miniconda3/envs/molmatmodel/lib/python3.13/site-packages/mace/calculators/mace.py:226: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  torch.load(f=model_path, map_location=device)
+
+=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===
+
+[H2] (BFGS steps=3, E_opt=-31.864231 eV, ZPE=0.1716 eV)
+  Internal frequencies (cm^-1): 2719.0
+
+[C2H4] (BFGS steps=9, E_opt=-2139.831839 eV, ZPE=1.3935 eV)
+  Internal frequencies (cm^-1): 830.6, 982.6, 998.9, 1055.9, 1240.6, 1380.8, 1460.4, 1715.6, 3152.1, 3166.0, 3223.0, 3246.6
+
+[C2H6] (BFGS steps=9, E_opt=-2173.454707 eV, ZPE=2.0359 eV)
+  Internal frequencies (cm^-1): 306.0, 824.4, 824.4, 1017.0, 1217.4, 1217.5, 1405.2, 1421.0, 1498.5, 1498.8, 1500.8, 1501.1, 3061.7, 3061.7, 3109.1, 3109.4, 3133.9, 3134.1
+
+=== Relaxed Bond Lengths vs. Experiment / Hybrid-DFT ===
+H-H  in H2         : 0.6973 A  (Expt: 0.741 A)
+C=C  in C2H4       : 1.3222 A  (Expt: 1.339 A)
+C-C  in C2H6       : 1.5241 A  (Expt: 1.535 A)
+
+=== Hydrogenation Thermochemistry Summary: C2H4 + H2 -> C2H6 ===
+Electronic dE_rxn  :  -1.7586 eV  ( -169.68 kJ/mol)
+Zero-Point dZPE    :  +0.4709 eV  (  +45.43 kJ/mol)  [Expt/DFT ref: ~ +0.34 eV (+33 kJ/mol)]
+ZPE-Corr dE_0K     :  -1.2878 eV  ( -124.25 kJ/mol)
+Enthalpy dH_298K   :  -1.3609 eV  ( -131.30 kJ/mol)  [Expt ref: -1.41 eV (-136.3 kJ/mol)]
