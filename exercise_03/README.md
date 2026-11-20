@@ -24,7 +24,7 @@ $$\Delta_r H^\circ(298.15\text{ K}) = -83.8 - (+52.4 + 0.00) = -136.2\text{ to }
 
 ## Challenge
 
-With the help of AI agents, adapt the scripts for **propene**:
+With the help of AI agents, adapt the scripts (MOPAC, xTB, MACE) for **propene**:
 
 $$\text{C}_3\text{H}_6(\text{g}) + \text{H}_2(\text{g}) \longrightarrow \text{C}_3\text{H}_8(\text{g})$$
 
