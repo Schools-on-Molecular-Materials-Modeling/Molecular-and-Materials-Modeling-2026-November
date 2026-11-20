@@ -4,7 +4,7 @@ from ase.build import molecule
 from mace.calculators import mace_off, mace_mp
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-print(f"=== 04. MACE Smoke Test (device={device}) ===")
+print(f"=== MACE Smoke Test (device={device}) ===")
 
 for label, calc in [
     ("MACE-OFF23 (medium)", mace_off(model="medium", device=device, default_dtype="float64")),
