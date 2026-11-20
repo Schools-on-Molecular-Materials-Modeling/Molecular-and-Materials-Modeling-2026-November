@@ -26,6 +26,7 @@ try:
     print(f"dHf(H2O, 298K)     : {dhf_ev:.6f} eV")
     print(f"Max Force Component: {np.abs(forces).max():.6f} eV/A")
 finally:
-    for p in Path(".").glob("check_mopac_h2o.*"):
-        p.unlink()
+    print ("keeping working files")
+#    for p in Path(".").glob("check_mopac_h2o.*"):
+#        p.unlink()
 
