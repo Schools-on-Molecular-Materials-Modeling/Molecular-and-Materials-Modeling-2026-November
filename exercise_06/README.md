@@ -31,8 +31,7 @@ ase gui liquid_water_300K.traj   # Interactive visualization of hydrogen-bond dy
 
 ## Challenge
 
-With the help of AI agents:
+With the help of AI agents, run the MD script 3 times, extract observables and compare against experimental data.
 
-1. **Heavy Water ($\text{D}_2\text{O}$) Kinetic Isotope Effect:** Replace protium (`H`, mass $1.008\text{ u}$) with deuterium (`D`, mass $2.014\text{ u}$) via `atoms.set_masses(...)` on the same potential energy surface (Born–Oppenheimer invariance) and verify whether the simulated self-diffusion coefficient decreases by the experimental ratio $D(\text{H}_2\text{O}) / D(\text{D}_2\text{O}) \approx 1.23$ ($D_{\text{expt}}(\text{D}_2\text{O}) = 1.87 \times 10^{-5}\text{ cm}^2/\text{s}$ at $298\text{ K}$).
-2. **Temperature Dependence (Arrhenius Diffusion):** Run $2\text{ ps}$ production trajectories at $280\text{ K}$, $300\text{ K}$, and $330\text{ K}$ to extract the activation energy $E_a$ of self-diffusion in liquid water ($\text{Expt: } E_a \approx 18\text{–}20\text{ kJ/mol}$).
+Also increase "prod_steps = 8000" , run the MD simulator once, extract observables and compare against experimental data.
 
