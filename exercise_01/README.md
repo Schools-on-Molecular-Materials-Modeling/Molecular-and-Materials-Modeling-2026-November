@@ -1,9 +1,6 @@
-#  Exercise 01 - checking the installed apparatus
-
-
+# Exercise 01 — Checking the Installed Apparatus
 
 ## Challenge
 
-redo all the checks within conda, check MACE, MOPAC, NWCHem as shown in recording
-
+Redo all the checks within conda; check MACE, MOPAC, and NWChem as shown in the recording.
 
