@@ -41,3 +41,11 @@ With the help of AI agents:
    - The anisotropy vanishes identically ($\Delta\chi = 0.000\text{ a.u.}$) by tetrahedral symmetry.
    - The molar magnetic susceptibility matches the experimental gas-phase value ($\chi_M(\text{CH}_4) \approx -17.4 \times 10^{-6}\text{ cm}^3/\text{mol}$, or $\chi_{\text{iso}} \approx -3.66\text{ a.u.}$).
 
+## Challenge2
+
+With the help of AI agents:
+
+1. **Isotropic Spherical Top** ($\mathrm{CH_4}$): Adapt `magnetizability_h2_pyscf.py` to compute the GIAO magnetizability tensor of **methane** ($\mathrm{CH_4}$, $T_{d}$ symmetry) at `B3LYP/aug-cc-pVTZ` and verify that:
+   - The anisotropy vanishes identically ($\Delta\chi = 0.000\ \mathrm{a.u.}$) by tetrahedral symmetry.
+   - The molar magnetic susceptibility matches the experimental gas-phase value ($\chi_{M}(\mathrm{CH_4}) \approx -17.4 \times 10^{-6}\ \mathrm{cm^{3}/mol}$, or $\chi_{\mathrm{iso}} \approx -3.66\ \mathrm{a.u.}$).
+
