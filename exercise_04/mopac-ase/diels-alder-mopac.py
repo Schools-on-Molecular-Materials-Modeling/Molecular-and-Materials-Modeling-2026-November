@@ -1,10 +1,8 @@
-import shutil
 from pathlib import Path
 from ase import Atoms
 from ase.build import molecule
 from ase.collections import g2
 from ase.optimize import BFGS
-from ase.vibrations import Vibrations
 from ase.units import kJ, mol
 from ase.calculators.mopac import MOPAC
 
@@ -15,6 +13,7 @@ print(f"Method             : {method} (Semi-Empirical NDDO Hamiltonian)")
 print("Reaction           : C4H6(g, 1,3-butadiene) + C2H4(g) -> C6H10(g, cyclohexene)")
 print("Energy Definition  : FINAL HEAT OF FORMATION dHf(298.15 K)")
 
+
 def make_mopac_calc(label):
     return MOPAC(
         label=label,
@@ -22,6 +21,7 @@ def make_mopac_calc(label):
         task="1SCF GRADIENTS PRECISE",
         command="mopac PREFIX.mop > /dev/null 2>&1",
     )
+
 
 def build_species(name):
     if name == "C4H6":
@@ -54,37 +54,27 @@ def build_species(name):
         return Atoms(symbols=symbols, positions=positions)
     raise ValueError(f"Unknown species: {name}")
 
-def relax_and_analyze(label, display_name, fmax=0.001):
+
+def relax_and_get_dhf(label, display_name, fmax=0.001):
     atoms = build_species(label)
     atoms.pbc = False
 
-    # 1. Geometry optimization
-    calc_opt = make_mopac_calc(f"mopac_opt_{label}")
-    atoms.calc = calc_opt
+    # Geometry optimization; MOPAC's FINAL HEAT OF FORMATION (298.15 K) is
+    # already the formation enthalpy, so no vibrational analysis is needed.
+    calc = make_mopac_calc(f"mopac_opt_{label}")
+    atoms.calc = calc
     opt = BFGS(atoms, logfile=None)
     opt.run(fmax=fmax)
-    dhf_ev = calc_opt.get_final_heat_of_formation()
-
-    # 2. Harmonic vibrational frequencies & ZPE
-    vib_dir = Path(f"vib_mopac_{label}")
-    if vib_dir.exists():
-        shutil.rmtree(vib_dir)
-
-    atoms.calc = make_mopac_calc(f"mopac_vib_{label}")
-    vib = Vibrations(atoms, name=str(vib_dir), delta=0.01)
-    vib.run()
-    zpe_ev = vib.get_zero_point_energy()
-    vib.clean()
-    if vib_dir.exists():
-        shutil.rmtree(vib_dir)
+    dhf_ev = calc.get_final_heat_of_formation()
 
     print(
         f"[{label:<5} ({display_name:<14})] steps={opt.nsteps:<3} | "
-        f"dHf_298K={dhf_ev / (kJ / mol):+8.2f} kJ/mol | ZPE={zpe_ev:.4f} eV"
+        f"dHf_298K={dhf_ev / (kJ / mol):+8.2f} kJ/mol"
     )
-    return atoms, dhf_ev, zpe_ev
+    return atoms, dhf_ev
 
-print("\n=== Tight Geometry Optimization & Harmonic Vibrations (delta = 0.01 A) ===")
+
+print("\n=== Tight Geometry Optimization & MOPAC Heat of Formation ===")
 species_list = [
     ("C4H6",  "1,3-butadiene"),
     ("C2H4",  "ethene"),
@@ -93,8 +83,8 @@ species_list = [
 
 results = {}
 for label, disp in species_list:
-    atoms, dhf_ev, zpe_ev = relax_and_analyze(label, disp, fmax=0.001)
-    results[label] = {"atoms": atoms, "dhf_ev": dhf_ev, "zpe_ev": zpe_ev}
+    atoms, dhf_ev = relax_and_get_dhf(label, disp, fmax=0.001)
+    results[label] = {"atoms": atoms, "dhf_ev": dhf_ev}
 
 # Key double-bond lengths check
 d_cc_diene = results["C4H6"]["atoms"].get_distance(0, 1)
@@ -112,17 +102,14 @@ dh_c2h4  = results["C2H4"]["dhf_ev"] / (kJ / mol)
 dh_c6h10 = results["C6H10"]["dhf_ev"] / (kJ / mol)
 
 dr_H_298 = dh_c6h10 - (dh_c4h6 + dh_c2h4)
-dZPE_kj  = (results["C6H10"]["zpe_ev"] - (results["C4H6"]["zpe_ev"] + results["C2H4"]["zpe_ev"])) / (kJ / mol)
 
 print("\n=== Diels-Alder Reaction Enthalpy Summary (PM7): C4H6 + C2H4 -> C6H10 ===")
 print(f"dHf(1,3-butadiene) : {dh_c4h6:+8.2f} kJ/mol  (Expt ref: +110.00 kJ/mol)")
 print(f"dHf(ethene)        : {dh_c2h4:+8.2f} kJ/mol  (Expt ref:  +52.40 kJ/mol)")
 print(f"dHf(cyclohexene)   : {dh_c6h10:+8.2f} kJ/mol  (Expt ref:   -4.30 kJ/mol)")
-print(f"Harmonic dZPE      : {dZPE_kj:+8.2f} kJ/mol  (Implicit in PM7 dHf)")
 print(f"Reaction drH_298K  : {dr_H_298:+8.2f} kJ/mol  ({dr_H_298 * (kJ / mol):+.4f} eV)  [Expt ref: -166.70 kJ/mol]")
 
 # Clean up temporary MOPAC files
-#for ext in ("*.mop", "*.out", "*.arc"):
+#for ext in ("*.mop", "*.out", "*.arc", "*.aux"):
 #    for f in Path(".").glob(ext):
 #        f.unlink()
-
