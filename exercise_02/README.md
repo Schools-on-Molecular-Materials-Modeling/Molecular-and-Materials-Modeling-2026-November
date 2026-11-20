@@ -4,7 +4,7 @@ Burning enthalpy of methane
 
 ### Gas-Phase Methane Combustion Reference
 
-$$\text{CH}_4(\text{g}) + 2\,\text{O}_2(\text{g}) \longrightarrow \text{CO}_2(\text{g}) + 2\,\text{H}_2\text{O}(\text{g})$$
+$$\text{CH}_4(\text{g}) + 2\text{O}_2(\text{g}) \longrightarrow \text{CO}_2(\text{g}) + 2\text{H}_2\text{O}(\text{g})$$
 
 The standard gas-phase combustion enthalpy of methane (Lower Heating Value, LHV) at $298.15\text{ K}$ is **$-802.3\text{ kJ/mol}$** (**$-8.32\text{ eV}$**, or **$-191.8\text{ kcal/mol}$**).
 
