@@ -25,7 +25,8 @@ try:
     print(f"Total Energy (H2O) : {energy:.6f} eV")
     print(f"Max Force Component: {np.abs(forces).max():.6f} eV/A")
 finally:
-    for p in Path(".").glob("check_nwchem_h2o*"):
-        if p.is_file():
-            p.unlink()
+    print(f"Keeping NWChem working files")
+#    for p in Path(".").glob("check_nwchem_h2o*"):
+#        if p.is_file():
+#            p.unlink()
 
