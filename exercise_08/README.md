@@ -13,6 +13,14 @@ $$
 \Delta\chi = \chi_{\parallel} - \chi_{\perp}
 $$
 
+$$
+\chi_{\alpha\beta} = -\left.\frac{\partial^{2} E(\mathbf{B})}{\partial B_{\alpha}\,\partial B_{\beta}}\right|_{\mathbf{B}=\mathbf{0}},
+\qquad
+\chi_{\mathrm{iso}} = \tfrac{1}{3}\,\mathrm{Tr}(\chi),
+\qquad
+\Delta\chi = \chi_{\parallel} - \chi_{\perp}
+$$
+
 ## Results vs. Experimental & High-Level Benchmarks
 
 | Property | `PySCF` (`B3LYP/aug-cc-pVTZ`) | Experimental Reference (300 K) | Agreement / Physical Meaning |
