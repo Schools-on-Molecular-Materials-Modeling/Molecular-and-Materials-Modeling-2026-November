@@ -1,0 +1,35 @@
+(mace_env) miroi@MIRO:~/work/projects/mol_mat_modeling_schools/Molecular-and-Materials-Modeling-2026-November/exercise_01/.python smoke_test-mace-alignnff.py
+[info] Test system: 8 atoms, Cu fcc 2x2x2, a=3.6 Å
+
+======================================================================
+MACE (mace_mp, small model, CPU)
+======================================================================
+/home/miroi/miniconda3/envs/mace_env/lib/python3.13/site-packages/e3nn/o3/_wigner.py:10: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using Materials Project MACE for MACECalculator with /home/miroi/.cache/mace/20231210mace128L0_energy_epoch249model
+Using float32 for MACECalculator, which is faster but less accurate. Recommended for MD. Use float64 for geometry optimization.
+/home/miroi/miniconda3/envs/mace_env/lib/python3.13/site-packages/mace/calculators/mace.py:226: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
+  torch.load(f=model_path, map_location=device)
+WARNING:root:Default dtype float32 does not match model dtype float64, converting models to float32.
+[MACE] energy = -32.718601 eV   max|F| = 0.000000 eV/Å   OK
+
+======================================================================
+ALIGNN-FF (AlignnAtomwiseCalculator, default_path, CPU)
+======================================================================
+Loading ALIGNN model /home/miroi/.cache/atomgptlab/alignn_ff/alignn_ff_mptrj/best_model.pt on cpu
+[ALIGNN-FF] energy = -32.742825 eV   max|F| = 0.000000 eV/Å   OK
+
+======================================================================
+SUMMARY
+======================================================================
+  MACE         : PASS
+  ALIGNN-FF    : PASS
+
+
+Notes:
+------
+MACE loads 20231210mace128L0_energy_epoch249model from ~/.cache/mace/ and runs float32 inference on CPU.
+ALIGNN-FF downloads/loads best_model.pt from ~/.cache/atomgptlab/alignn_ff/alignn_ff_mptrj/ and runs.
+The e3nn 0.4.4 + torch 2.13 workaround (TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1) is active and sufficient.
+No DGL, no AlignnConfig, no cuequivariance needed.
