@@ -1,6 +1,6 @@
 # Exercise 06
 
-Molecular dynamics (MD) simulation of ambient liquid water ($32\ \text{H}_2\text{O}$ molecules, $96\text{ atoms}$, $300\text{ K}$) driven by **ASE** and **MACE-OFF23**, comparing simulated liquid structure ($g_{\text{OO}}(r)$) and transport dynamics ($D$) against experimental X-ray/neutron scattering and NMR benchmarks.
+Molecular dynamics (MD) simulation of ambient liquid water  (300 K) driven by **ASE** and **MACE-OFF23**, comparing simulated liquid structure ($g_{\text{OO}}(r)$) and transport dynamics ($D$) against experimental X-ray/neutron scattering and NMR benchmarks.
 
 ![Liquid Water MD Analysis](water_md_analysis_SAVED.png)
 
@@ -33,5 +33,5 @@ ase gui liquid_water_300K.traj   # Interactive visualization of hydrogen-bond dy
 
 With the help of AI agents, run the MD script 3 times, extract observables and compare against experimental data.
 
-Also increase "prod_steps = 8000" , run the MD simulator once, extract observables and compare against experimental data.
+Also increase "prod_steps = 8000" , run the MD simulator once, extract observables and compare calculated results against experimental data.
 
