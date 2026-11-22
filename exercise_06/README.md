@@ -1,6 +1,6 @@
 # Exercise 06
 
-Molecular dynamics (MD) simulation of ambient liquid water  (300 K) driven by **ASE** and **MACE-OFF23**, comparing simulated liquid structure ($g_{\text{OO}}(r)$) and transport dynamics ($D$) against experimental X-ray/neutron scattering and NMR benchmarks.
+Molecular dynamics (MD) simulation of ambient liquid water  (300 K) driven by **ASE** and **MACE-OFF23**, comparing simulated liquid structure ( **$g_{\text{OO}}(r)$** $g_{\text{OO}}(r)$ ) and transport dynamics ($D$) against experimental X-ray/neutron scattering and NMR benchmarks.
 
 ![Liquid Water MD Analysis](water_md_analysis_SAVED.png)
 
