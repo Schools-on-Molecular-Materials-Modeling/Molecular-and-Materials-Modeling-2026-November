@@ -31,7 +31,7 @@ ase gui liquid_water_300K.traj   # Interactive visualization of hydrogen-bond dy
 
 ## Challenge
 
-With the help of AI agents, run the MD script 3 times, extract observables and compare against experimental data.
+Run the MD script 3 times, extract observables and compare against experimental data.
 
 Also increase "prod_steps = 8000" , run the MD simulator once, extract observables and compare calculated results against experimental data.
 
